@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="32dp"
+        android:background="@color/background"
+        tools:context=".presenter.AddRecordActivityPackage.AddRecordActivity">
+
+        <TextView
+            android:id="@+id/addNewRecordHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nova_mono"
+            android:text="@string/add_new_record"
+            android:textColor="@color/deepBlue"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/phoneNumber"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.227" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/phoneNumber"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_phone_number"
+            app:endIconMode="clear_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.348"
+            app:startIconDrawable="@drawable/fui_ic_phone_white_24dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPhonetic" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/amountInvolved"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/enter_amount_involved"
+            app:endIconMode="clear_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/phoneNumber"
+            app:startIconDrawable="@drawable/ic_baseline_account_balance_wallet_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <RadioGroup
+            android:id="@+id/parityGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/amountInvolved">
+
+            <RadioButton
+                android:id="@+id/amountSentButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/amount_sent" />
+
+            <RadioButton
+                android:id="@+id/amountReceivedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/amount_received" />
+        </RadioGroup>
+
+        <com.bartbergmans.gradientbutton.views.GradientButton
+            android:id="@+id/saveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="20dp"
+            android:text="@string/generate_qr_code"
+            android:textColor="@android:color/white"
+            app:end_color="@color/gradientEnd"
+            app:filled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/parityGroup"
+            app:orientation="top_bottom"
+            app:start_color="@color/gradientStart"
+            app:stroke="3dp" />
+
+
+        <ImageView
+            android:id="@+id/qrCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/qr_code_place_holder"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.37" />
+
+        <com.bartbergmans.gradientbutton.views.GradientButton
+            android:id="@+id/transactionSuccessful"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:clickable="true"
+            android:padding="16dp"
+            android:text="@string/scanning_successful"
+            android:visibility="gone"
+            app:end_color="@color/gradientEnd"
+            app:fill_color="@color/fillColor"
+            app:filled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/qrCode"
+            app:orientation="top_bottom"
+            app:start_color="@color/gradientStart"
+            app:stroke="3dp" />
+
+        <com.bartbergmans.gradientbutton.views.GradientButton
+            android:id="@+id/transactionRevoked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:clickable="true"
+            android:padding="16dp"
+            android:text="@string/revoke_transaction"
+            android:visibility="gone"
+            app:end_color="@color/gradientEnd"
+            app:filled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/transactionSuccessful"
+            app:orientation="top_bottom"
+            app:start_color="@color/gradientStart"
+            app:stroke="3dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
