@@ -106,6 +106,3 @@ What are the Different Layers of the Project?
 
 * Android Studio
 
-## Author
-
-* <a href="https://www.linkedin.com/in/sayantan-banerjee-iiitgwalior/">  **Sayantan Banerjee** </a>
